@@ -1,0 +1,209 @@
+/*
+ * Enhanced styles.css for the Loan Approval Prediction web application.
+ * Features a modern, minimalist design with attention to detail and interaction.
+ */
+
+/* --- IMPORT FONT --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* --- GLOBAL STYLES (Modern Background and Font) --- */
+body {
+    /* Subtle, professional blue-gray gradient background */
+    background: linear-gradient(135deg, #f0f4f7 0%, #d9e2ec 100%);
+    font-family: 'Roboto', sans-serif; /* Clean, modern font */
+    color: #2f3e4f; /* Darker, professional text color */
+    
+    /* Centering the content card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Padding for mobile view */
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar for a cleaner look (optional, but nice touch) */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: #aab5c2;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7a8aa3;
+}
+
+/* --- CONTAINER (The Floating Card) --- */
+.container {
+    width: 100%;
+    max-width: 550px; /* Slightly wider card for better form layout */
+    background-color: #ffffff;
+    padding: 40px 40px; 
+    border-radius: 20px; /* Smoother, more inviting corner radius */
+    
+    /* Elegant, layered shadow for a floating effect */
+    box-shadow: 
+        0 8px 30px rgba(47, 62, 79, 0.1), /* Main soft shadow */
+        0 0 0 1px rgba(47, 62, 79, 0.05); /* Very subtle border line */
+    text-align: center; 
+}
+
+/* --- HEADING & TAGLINE --- */
+.main-heading {
+    color: #4a69bd; /* Deep Professional Blue */
+    margin-bottom: 5px;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.tagline {
+    color: #8c9aaf; 
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    font-weight: 300; /* Lighter weight for contrast */
+}
+
+/* --- FORM STYLES --- */
+.loan-form {
+    display: grid;
+    /* Use grid for a beautiful, responsive 2-column layout */
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Ensure the button and result span full width */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 0; /* Managed by grid gap */
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Interactive hover effect on form groups */
+.form-group:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(74, 105, 189, 0.1);
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #4a69bd; /* Primary Blue label color */
+    font-size: 0.9em;
+}
+
+/* Style for input[type="number"] and select elements */
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px 15px; /* Taller, elegant inputs */
+    border: 1px solid #dcdfe4;
+    border-radius: 10px; /* Slightly softer corners */
+    box-sizing: border-box; 
+    font-size: 1em;
+    color: #2f3e4f;
+    background-color: #f7f9fb; /* Very light background for input */
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input[type="number"]:focus,
+select:focus {
+    /* Elegant focus highlight */
+    border-color: #4a69bd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 105, 189, 0.2);
+    background-color: #ffffff;
+}
+
+/* --- BUTTON STYLES (Gradient Primary Button) --- */
+.predict-button {
+    background: linear-gradient(90deg, #4a69bd 0%, #6a89cc 100%); /* Soft gradient */
+    color: white;
+    padding: 15px 30px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    /* Subtle 3D lift effect */
+    box-shadow: 0 6px 15px rgba(74, 105, 189, 0.3); 
+    transition: all 0.2s ease;
+}
+
+.predict-button:hover {
+    background: linear-gradient(90deg, #3b508d 0%, #5a74b0 100%);
+    box-shadow: 0 3px 8px rgba(74, 105, 189, 0.4); 
+    transform: translateY(1px); /* Button pushes down for tactile feel */
+}
+
+/* --- PREDICTION RESULT STYLES (Clear Visual Feedback) --- */
+.prediction-result {
+    margin-top: 40px;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.approved {
+    color: #27ae60; /* Success Green */
+    background-color: #e6f7ee;
+    border-color: #2ecc71;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
+}
+
+.rejected {
+    color: #e74c3c; /* Danger Red */
+    background-color: #fcebeb;
+    border-color: #e74c3c;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
+}
+
+/* --- RESPONSIVENESS (Mobile Optimization) --- */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 20px;
+        margin: 10px;
+        max-width: 100%;
+    }
+    
+    /* Switch to a single column layout on smaller screens */
+    .loan-form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .main-heading {
+        font-size: 2em;
+    }
+    
+    .tagline {
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+    
+    .predict-button {
+        padding: 14px 20px;
+        font-size: 1em;
+    }
+}
