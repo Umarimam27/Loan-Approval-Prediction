@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Loan Approval Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-heading">🏦 Loan Approval Predictor</h1>
+        <p class="tagline">Provide all details for the most accurate prediction.</p>
+        
+        <div class="card-content">
+            <form method="POST" action="/predict" class="loan-form">
+                
+                <div class="form-group">
+                    <label for="ApplicantIncome">Applicant Income ($)</label>
+                    <input type="number" step="1" name="ApplicantIncome" id="ApplicantIncome" placeholder="e.g., 5000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="CoapplicantIncome">Coapplicant Income ($)</label>
+                    <input type="number" step="1" name="CoapplicantIncome" id="CoapplicantIncome" placeholder="e.g., 1000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="LoanAmount">Loan Amount (in Thousands $)</label>
+                    <input type="number" step="any" name="LoanAmount" id="LoanAmount" placeholder="e.g., 146.4" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Loan_Amount_Term">Loan Term (Months)</label>
+                    <select name="Loan_Amount_Term" id="Loan_Amount_Term" required>
+                        <option value="360" selected>360 Months (30 Yrs)</option>
+                        <option value="180">180 Months (15 Yrs)</option>
+                        <option value="120">120 Months (10 Yrs)</option>
+                        <option value="60">60 Months (5 Yrs)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <select name="Gender" id="Gender" required>
+                        <option value="Male" selected>Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Married">Marital Status</label>
+                    <select name="Married" id="Married" required>
+                        <option value="Yes" selected>Married</option>
+                        <option value="No">Single</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Dependents">Dependents</label>
+                    <select name="Dependents" id="Dependents" required>
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3+">3+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Self_Employed">Self Employed</label>
+                    <select name="Self_Employed" id="Self_Employed" required>
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Education">Education</label>
+                    <select name="Education" id="Education" required>
+                        <option value="Graduate" selected>Graduate</option>
+                        <option value="Not Graduate">Not Graduate</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Property_Area">Property Area</label>
+                    <select name="Property_Area" id="Property_Area" required>
+                        <option value="Semiurban" selected>Semiurban</option>
+                        <option value="Urban">Urban</option>
+                        <option value="Rural">Rural</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="Credit_History">Credit History (1.0 = Met Obligations / 0.0 = Failed)</label>
+                    <select name="Credit_History" id="Credit_History" required>
+                        <option value="1.0" selected>1.0 (Good Credit Record)</option>
+                        <option value="0.0">0.0 (Poor/Missing Record)</option>
+                    </select>
+                </div>
+                
+                <div class="full-width">
+                    <button type="submit" class="predict-button">GET LOAN PREDICTION</button>
+                </div>
+            </form>
+            
+            {% if prediction %}
+                <div class="prediction-result 
+                    {% if 'Approved' in prediction %}approved{% else %}rejected{% endif %}">
+                    {{ prediction }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
